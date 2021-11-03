@@ -1,7 +1,7 @@
 Package: FindCurve
 Type: Package
 Title: Computing Curves of Solutions to Non-Linear Systems of Equations
-Version: 0.0.1
+Version: 0.1.0
 Authors@R: c(person("Andre M.", "de Roos", email = "A.M.deRoos@uva.nl", role = c("aut", "cre")),
              person("Ernst", "Hairer", email = "Ernst.Hairer@unige.ch", role = "ctb"),
              person("Gerhard", "Wanner", email = "Gerhard.Wanner@unige.ch", role = "ctb"))
