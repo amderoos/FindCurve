@@ -26,3 +26,8 @@ To install the package on your system use the command:
 ```
 devtools::install_github("amderoos/FindCurve")
 ```
+
+To cite FindCurve in publications use:
+
+André M. de Roos (2021). FindCurve: A software package for computing curves of solutions to non-linear systems of equations, version 0.1.0. https://doi.org/10.5281/zenodo.5642759
+
