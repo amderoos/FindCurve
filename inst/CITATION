@@ -1,14 +1,14 @@
 citHeader("To cite FindCurve in publications use:")
 
 citEntry(entry = "Manual",
-  title        = "FindCurve: A Software Package for Computing Curves of Solutions to Non-linear Systems of Equations",
+  title        = "FindCurve: A software package for computing curves of solutions to non-linear systems of equations",
   author       = "André M. de Roos",
   organization = "Institute for Biodiversity and Ecosystem Dynamics, University of Amsterdam",
-  year         = "2018",
-  url          = "https://bitbucket.org/amderoos/FindCurve",
+  year         = "2021",
+  url          = "https://doi.org/10.5281/zenodo.5642759",
 
   textVersion  =
-  paste("André M. de Roos (2017).",
-        "FindCurve: A Software Package for Computing Curves of Solutions to Non-linear Systems of Equations",
-        "URL https://bitbucket.org/amderoos/FindCurve")
+  paste("André M. de Roos (2021).",
+        "FindCurve: A software package for computing curves of solutions to non-linear systems of equations, version 0.1.0.",
+        "https://doi.org/10.5281/zenodo.5642759")
 )
