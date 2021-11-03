@@ -24,5 +24,5 @@ The system of equations to be solved has to be implemented in C, but the package
 To install the package on your system use the command:
 
 ```
-devtools::install_bitbucket("amderoos/FindCurve/R")
+devtools::install_github("amderoos/FindCurve")
 ```
