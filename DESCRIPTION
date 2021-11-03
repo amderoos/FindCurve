@@ -1,0 +1,22 @@
+Package: FindCurve
+Type: Package
+Title: Computing Curves of Solutions to Non-Linear Systems of Equations
+Version: 0.0.1
+Authors@R: c(person("Andre M.", "de Roos", email = "A.M.deRoos@uva.nl", role = c("aut", "cre")),
+             person("Ernst", "Hairer", email = "Ernst.Hairer@unige.ch", role = "ctb"),
+             person("Gerhard", "Wanner", email = "Gerhard.Wanner@unige.ch", role = "ctb"))
+Description: General purpose software package, written in C, that solves non-linear systems of equations of the form F(x, p) = 0
+             where F is a vector-valued function of a vector x of unknowns and p represents a parameter. There is little limitation 
+             to the formulation of the system of equations, for example, F(x, p) may be defined as the result of an numerical 
+             integration of a system of ordinary differential equations. For this purpose the package also includes a  dedicated
+             numerical differential equation solver. When a solution point x to the system of equations has been found, the package 
+             will output all information about the solution point itself and all the values of additional functions G(x) 
+             that the user can define his/herself. Here again, G(x) is a vector-valued function.
+License: GPL-3
+Encoding: UTF-8
+NeedsCompilation: yes
+LazyData: true
+Imports: pkgbuild (>= 1.0)
+Suggests: testthat
+RoxygenNote: 7.1.2
+Depends: R (>= 3.1)
