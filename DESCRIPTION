@@ -1,7 +1,7 @@
 Package: FindCurve
 Type: Package
 Title: Computing Curves of Solutions to Non-Linear Systems of Equations
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: c(person("Andre M.", "de Roos", email = "A.M.deRoos@uva.nl", role = c("aut", "cre")),
              person("Ernst", "Hairer", email = "Ernst.Hairer@unige.ch", role = "ctb"),
              person("Gerhard", "Wanner", email = "Gerhard.Wanner@unige.ch", role = "ctb"))
@@ -15,7 +15,6 @@ Description: General purpose software package, written in C, that solves non-lin
 License: GPL-3
 Encoding: UTF-8
 NeedsCompilation: yes
-LazyData: true
 Imports: pkgbuild (>= 1.0)
 Suggests: testthat
 RoxygenNote: 7.1.2
