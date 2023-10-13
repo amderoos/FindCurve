@@ -22,7 +22,7 @@
     You should have received a copy of the GNU General Public License
     along with this software. If not, see <http://www.gnu.org/licenses/>.
 
-    Last modification: AMdR - Aug 11, 2021
+    Last modification: AMdR - Oct 13, 2023
 ***/
 #ifndef GLOBALS
 #define GLOBALS
@@ -310,8 +310,17 @@ EXTERN int                        CtrlCPressed;
 
 
 #elif defined(R_PACKAGE)                                                            // R under Mac OS or under Windows using gcc from Rtools
+// before any R headers, or define in PKG_CPPFLAGS
+#ifndef  USE_FC_LEN_T
+# define USE_FC_LEN_T
+#endif
+#include <Rconfig.h>
 #include "R_ext/BLAS.h"
 #include "R_ext/Lapack.h"
+
+#ifndef FCONE
+# define FCONE
+#endif
 
 // Blas & Lapack index type
 
@@ -390,6 +399,7 @@ INLINE void SCAL(int a, double b, double *c, int d)
 
 #if !defined(MATLAB_MEX_FILE)
 
+#if defined(__linux__) && !defined(R_PACKAGE)
 #define dgetrf                    dgetrf_                                           // Used in: Determinant()
 #define dgecon                    dgecon_                                           // Used in: Determinant()
 #define dgeevx                    dgeevx_                                           // Used in: Eigenval()
@@ -397,7 +407,6 @@ INLINE void SCAL(int a, double b, double *c, int d)
 #define dlamch                    dlamch_                                           // Used in: Eigenval()
 #define dsyevr                    dsyevr_                                           // Used in: Eigenval()
 
-#if defined(__linux__) && !defined(R_PACKAGE)
 extern void                       dgetrf(LAPACK_SIZE_T *m, LAPACK_SIZE_T *n, double *a, LAPACK_SIZE_T *lda, LAPACK_SIZE_T *ipiv, LAPACK_SIZE_T *info);
 extern void                       dgecon(char *norm, LAPACK_SIZE_T *n, double *a, LAPACK_SIZE_T *lda, double *anorm, double *rcond, double *work,
                                          LAPACK_SIZE_T *iwork, LAPACK_SIZE_T *info);

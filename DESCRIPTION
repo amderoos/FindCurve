@@ -17,5 +17,5 @@ Encoding: UTF-8
 NeedsCompilation: yes
 Imports: pkgbuild (>= 1.0)
 Suggests: testthat
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
 Depends: R (>= 3.1)

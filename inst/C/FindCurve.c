@@ -25,7 +25,7 @@
     You should have received a copy of the GNU General Public License
     along with FindCurve. If not, see <http://www.gnu.org/licenses/>.
 
-    Last modification: AMdR - Aug 11, 2021
+    Last modification: AMdR - Oct 13, 2023
 */
 
 #include "globals.h"
@@ -812,8 +812,12 @@ void InitialiseVars(void)
   for (i = 0; i < MAX_PNTDIM; i++) pntmax[i] = DBL_MAX;
 
   // Get the machine precisions
+#if defined(R_PACKAGE)
+  epsMach = F77_CALL(dlamch)("Epsilon" FCONE);
+#else
   epsMach = dlamch("Epsilon");
-
+#endif
+  
 #if defined(R_PACKAGE)
   STDOUT("\n");
 #else
