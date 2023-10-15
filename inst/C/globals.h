@@ -22,7 +22,7 @@
     You should have received a copy of the GNU General Public License
     along with this software. If not, see <http://www.gnu.org/licenses/>.
 
-    Last modification: AMdR - Oct 13, 2023
+    Last modification: AMdR - Oct 15, 2023
 ***/
 #ifndef GLOBALS
 #define GLOBALS
@@ -318,10 +318,6 @@ EXTERN int                        CtrlCPressed;
 #include "R_ext/BLAS.h"
 #include "R_ext/Lapack.h"
 
-#ifndef FCONE
-# define FCONE
-#endif
-
 // Blas & Lapack index type
 
 #define BLAS_SIZE_T               const int
@@ -399,14 +395,28 @@ INLINE void SCAL(int a, double b, double *c, int d)
 
 #if !defined(MATLAB_MEX_FILE)
 
-#if defined(__linux__) && !defined(R_PACKAGE)
+// See https://cran.r-project.org/doc/manuals/r-devel/R-exts.html#Fortran-character-strings
+#ifndef FCONE
+#define FCONE
+#endif
+
+#if defined(R_PACKAGE)
+#define dgetrf                    F77_CALL(dgetrf)                                  // Used in: Determinant()
+#define dgecon                    F77_CALL(dgecon)                                  // Used in: Determinant()
+#define dgeevx                    F77_CALL(dgeevx)                                  // Used in: Eigenval()
+#define dgesvx                    F77_CALL(dgesvx)                                  // Used in: SolveLinearSystem()
+#define dlamch                    F77_CALL(dlamch)                                  // Used in: Eigenval()
+#define dsyevr                    F77_CALL(dsyevr)                                  // Used in: Eigenval()
+#else
 #define dgetrf                    dgetrf_                                           // Used in: Determinant()
 #define dgecon                    dgecon_                                           // Used in: Determinant()
 #define dgeevx                    dgeevx_                                           // Used in: Eigenval()
 #define dgesvx                    dgesvx_                                           // Used in: SolveLinearSystem()
 #define dlamch                    dlamch_                                           // Used in: Eigenval()
 #define dsyevr                    dsyevr_                                           // Used in: Eigenval()
+#endif
 
+#if defined(__linux__) && !defined(R_PACKAGE)
 extern void                       dgetrf(LAPACK_SIZE_T *m, LAPACK_SIZE_T *n, double *a, LAPACK_SIZE_T *lda, LAPACK_SIZE_T *ipiv, LAPACK_SIZE_T *info);
 extern void                       dgecon(char *norm, LAPACK_SIZE_T *n, double *a, LAPACK_SIZE_T *lda, double *anorm, double *rcond, double *work,
                                          LAPACK_SIZE_T *iwork, LAPACK_SIZE_T *info);
